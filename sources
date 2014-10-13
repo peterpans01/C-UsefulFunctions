@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+#include <list>
+#include <math.h>
+
+using namespace std;
+/**
+*Find all the divisor of integer.
+*/
+
+list<unsigned int> FindTheDivisor(unsigned int num)
+{
+	list<unsigned int> divisors;
+	for(unsigned int i = 2; i<sqrt((double)num); i++)
+	{
+		if(num%i==0)
+		{
+			divisors.push_back(i); 
+			divisors.push_back(num/i);
+		}
+	}
+	return divisors;
+}
+/**
+* convert an integer to the list of digits
+*/
+list<unsigned int> ToDigits(unsigned int num)
+{
+	list<unsigned int> digits;
+	if(num==0)
+		return digits;
+	digits = ToDigits(num/10);
+	digits.push_back(num%10);
+
+	return digits;
+}
